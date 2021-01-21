@@ -1,0 +1,39 @@
+LB1 M133: AB133-03 bis AB133-05
+--------------------------------
+- ORM: Objekt relationale Mapping (Datenabfrage)
+
+--> rails c / ERB
+
+MVC:
+--------------------------------
+--> Migration (rails db:migrate)
+
+--> Models: Beziehungen
+
+- CRUD:
+Controller
+
+Struktur Rails: GEMFILE (Installationsbaum) 
+Im GEMFILE können Bibliotheken oder Programme eingetragen werden und  mit bundle install installiert werden. Nach der Inst. stehen die Bibliotheken oder Programme in der Rails App zur Verfügung.
+
+bundle install 
+
+rails generate controller | model | migration
+
+Application-Objekt (lebt zur Runtime)
+application.html.erb : <html><head><body> --> ist für alle views gültig
+views werden durch die Variable "yield" in application.html.erb eingefügt.
+
+application.scss --> Formatierungen die für alle views gültig sind.
+
+Methode, welche Daten aus Model in globale Variable speichert --> Auflisten
+der Daten in einer ERB Seite 
+
+Controller
+@globaleVariable --> auf jeder View wiederverwenden
+@books = Book.all
+
+--> Wie wird die Variable @books auf einer view durch iteriert.
+
+Routen (routes.rb): Zusammenhang zwischen Conrtoller, Model und View: Architektur von MVC
+

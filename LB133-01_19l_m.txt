@@ -1,0 +1,87 @@
+LB133-01 19l/m
+--------------
+1. Rails Migration
+
+- Tabelle verändern (Tabellenname, Datentyp Attribut, Spaltenbezeichnung, neue Spalte,...)
+- Daten erfassen
+
+$ rails generate migration create_country
+
+---> db/migrate/<timestamp>_create_country.rb wird ausgeführt wenn das Kommando
+
+class Subjects < ActiveRecord::Migration[5.2]
+  def change
+    create_table :country do |t|
+      t.string :countryname
+      t.timestamps
+    end
+
+Es werden zwei Attribute erstellt, durch die Vorgabe der change Methode (countryname, timestamps), automatisch werden noch der PRIMARY KEY sowie created_at und uodated_at erstellt.
+
+$ rails db:migrate
+
+2. ORM ---> erstezt SQL
+
+rails console oder rails c
+
+Country (Modelname) --> countries (Tabellenname)
+
+id		countryname		
+1		CH
+2		DE
+3		UK
+4		PK
+
+Loading development environment (Rails 5.2.3)
+2.7.1 :001 > Country.connection
+2.7.1 :002 > Country.find(3)
+--> UK
+2.7.1 :003 > Country.find_by_countryname("CH,"DE","UK")
+--> ERROR
+2.7.1 :004 > Country.where(id<4)
+1		CH
+2		DE
+3		UK
+
+2.7.1 :005 > new_country = Country.new
+2.7.1 :006 > new_countr.name = "US"
+2.7.1 :007 > new_country.save
+2.7.1 :008 > Country.create(:countryname=>"US")
+
+
+3. Ausgabe des Model Country auf einer View
+
+Namenskonvention von REST-API
+
+$ rails g controller countries index
+					 \_______/ \___/ 
+					 	|		app/views/countries/index.html.erb
+app/controllers/countries_controller.rb
+
+http://localhost:3000/countries
+
+config/routes.rb: get 'countries/index'
+
+app/controllers/countries_controller.rb
+
+def index
+	@countries = Country.all
+end	
+
+app/views/countries/index.html.erb
+
+<%for @countries.each do |c|
+	c.countryname
+end%>
+
+
+4. bundle install
+
+Installiert Bibliotheken (kleine Programme) --> Angaben der zu installierenden Bibliotheken werden in das Gemfile eingetragen
+
+
+
+
+
+
+

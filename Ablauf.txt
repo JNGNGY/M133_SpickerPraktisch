@@ -1,0 +1,53 @@
+Ablauf
+
+Rails App erstellen 
+- rails new (name)
+
+Model erstellen (Name in einzahl)
+- rails generate model (NameOftheModel) name:string age:integer
+
+Controller erstellen
+- rails g controller (NameInMehrzeil) index
+
+Controller Verzeichnis
+- app/controllers
+
+Model beziehungen // Verzeichnispfad app/models/
+- belongs_to :(controllername)(1:1 or m:1)
+- has_one(1:1)
+- has_many(1:m)
+
+Tabelle im Code erfasst
+- myapp/db/migrate/
+
+Tabelle erstellen
+- rails db:migrate
+
+Routing // Verzeichnis app/config
+- get 'index/countries'
+-----------------------------------------------------------------
+				Konsole
+------------------------------------------------------------------
+Konsole öffnen
+- rails c
+
+Auf's Model zugreifen
+- NameOfModel.connection ----> User.connection
+
+Ausgabe für Tabellenstruktur
+- NameOfModel
+
+Daten neu im Model erfassen
+- NameOftheModel.create(name:'Swiss', people:123123)
+
+Daten im Model ändern
+- p_change = User.where(name: "chris")
+- p_change.name = 'Jan'
+
+Daten im Model löschen
+- User.delete, User.last.delete
+----------------------------------------------------------------
+				Verzeichnisse
+-----------------------------------------------------------------
+View Seite
+- myapp/app/views/
